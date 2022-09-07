@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table,tr,td{
+            border: 1px solid #0099ff;
+            border-collapse: collapse;
+        }
+    </style>
+    
+</head>
+<body background="두두둥.jpg">
+    <audio controls autoplay >
+        <source src="MP_놀고싶은 강아지.mp3" type="audio/mpeg">
+    </audio>
+    <form>   
+        <table width="600" height="250" align="center"  >
+            <tr>
+                <td colspan="3" align="center" bgcolor="#3399FF" ><B>회원 기본 정보</B></td>
+            </tr>
+            <tr >
+                <td align="center" bgcolor="#DCDCDC" ><B>아이디:</B></td>
+                <td bgcolor="white" >
+                    <input type="text" name="my_name" size="20" minlength="4" maxlength="12" >
+                    4~12자의 영문 대소문자와 숫자로만 입력
+                </td>
+            </tr>
+            <tr>
+                <td align="center" bgcolor="#DCDCDC"><B>비밀번호:</B></td>
+                <td bgcolor="white">
+                    <!-- 텍스트박스 -->
+                    <input type="password" name="my_name" size="20" minlength="4" maxlength="12" >
+                    4~12자의 영문 대소문자와 숫자로만 입력
+                </td>
+            </tr>
+            <tr>
+                <td align="center" bgcolor="#DCDCDC"><B>비밀번호확인:</B></td>
+                <td bgcolor="white">
+                    <!-- 텍스트박스 -->
+                    <input type="password" name="my_name" size="20"maxlength="12" >
+                </td>
+            </tr>
+            <tr>
+                <td align="center" bgcolor="#DCDCDC"><B>메일주소:</B></td>
+                <td bgcolor="white">
+                    <!-- 텍스트박스 -->
+                    <input type="text" name="my_name" size="20" >
+                    예)id@domain.com
+                </td>
+            </tr>
+            <tr>
+                <td align="center" bgcolor="#DCDCDC"><B>이름:</B></td>
+                <td bgcolor="white">
+                    <input type="text" name="my_name" size="20" maxlength="12">
+                    <!-- 텍스트박스 -->
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3" align="center" bgcolor="#3399FF" ><B>개인 신상 정보</B></td>
+            </tr>
+            <tr>
+                <td align="center" bgcolor="#DCDCDC"><B>주민등록번호:</B></td>
+                <td bgcolor="white">
+                    <!-- 텍스트박스 -->
+                    <input type="text" name="my_name" size="20" maxlength="13">
+                    예)1234561234567
+                </td>
+            </tr>
+            <tr>
+                <td align="center" bgcolor="#DCDCDC"><B>생일:</B></td>
+                <td  bgcolor="white">
+                    <!-- 텍스트박스 -->
+                    <input type="text" name="my_name" size="5" maxlength="4">
+                    년
+                    <!-- 드롭다운 1 checked-->
+                    <select name="year" id="year">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                        <option value="11">11</option>
+                        <option value="12">12</option>
+                    </select>
+                    월
+                    <!-- 드롭다운 1checked-->
+                    <select name="year" id="year">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                        <option value="11">11</option>
+                        <option value="12">12</option>
+                        <option value="13">13</option>
+                        <option value="14">14</option>
+                        <option value="15">15</option>
+                        <option value="16">16</option>
+                        <option value="17">17</option>
+                        <option value="18">18</option>
+                        <option value="19">19</option>
+                        <option value="20">20</option>
+                        <option value="21">21</option>
+                        <option value="22">22</option>
+                        <option value="23">23</option>
+                        <option value="24">24</option>
+                        <option value="25">25</option>
+                        <option value="26">26</option>
+                        <option value="27">27</option>
+                        <option value="28">28</option>
+                        <option value="29">29</option>
+                        <option value="30">30</option>
+                        <option value="31">31</option>
+                    </select>
+                    일
+                </td>
+            </tr>
+            <tr>
+                <td align="center" bgcolor="#DCDCDC"><B>관심분야:</B></td>
+                <td bgcolor="white">
+                    <!-- checkbox -->
+                    <input type="checkbox" name="computer" value="컴퓨터">컴퓨터
+                    <input type="checkbox" name="computer" value="인터넷">인터넷
+                    <input type="checkbox" name="computer" value="여행">여행
+                    <input type="checkbox" name="computer" value="영화감상">영화감상
+                    <input type="checkbox" name="computer" value="음악감상">음악감상
+                </td>
+            </tr>
+            <tr>
+                <td align="center" bgcolor="#DCDCDC"><B>자기소개:</B></td>
+                <td bgcolor="white">
+                    <textarea name="id" cols="40" rows="5"></textarea>
+                    
+                </td>
+            </tr>
+        </table>
+        <br>
+        <div align="center">
+            <input type="submit" value="회원가입" formaction="mailto:yangyeonji@gmail.com?subject=자기소개서입니다">
+            <input type="reset" value="다시입력">
+        </div>
+    </form>
+
+</body>
+</html>

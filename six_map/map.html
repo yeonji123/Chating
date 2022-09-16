@@ -1,0 +1,144 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8"/>
+	<title>Kakao 지도 시작하기</title>
+</head>
+<script></script>
+<style>
+	body{
+		margin: 0px;
+	}
+	#map{
+		width: 99.5vw; height: 99.5vh; min-height: 500px;  display:inline-block; z-index: 100;
+	}
+    #mylocation{
+        position:absolute; width: 40px; height: 40px; bottom: 40px; left:20px; padding:5px; z-index:10;
+    }
+
+</style>
+<script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+
+<body >
+	<div id="map" >
+        <div>
+            <!-- 사용자 위치 이미지 추가합니다 -->
+            <button id="mylocation" onclick="getLocation()">location</button>
+            <button id="button1" style="position:absolute; z-index:8; width: 40px; height: 40px; bottom:90px; right:20px;">hey</button>
+            <button id="button2" style="position:absolute; z-index:9; width: 40px; height: 40px; bottom:40px;right:20px;">hihi</button>
+        </div>
+    </div>
+    <div id="data">
+
+    </div>
+
+
+	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey="></script>
+    <script src="../hospitalData.json" type="text/javascript"></script>
+	<script>
+		var container = document.getElementById('map');
+		var options = {
+			center: new kakao.maps.LatLng(33.450701, 126.570667),
+			level: 3
+		};
+
+		var map = new kakao.maps.Map(container, options);
+
+        var x = document.getElementById("mylocation");
+
+		function getLocation() {
+			if (navigator.geolocation) {
+				navigator.geolocation.getCurrentPosition(panTo);
+			} else {
+				x.innerHTML = "Geolocation is not supported by this browser.";
+			}
+		}
+
+		function panTo(position) {
+			//x.innerHTML = "Latitude: " + position.coords.latitude + "    Longitude: " + position.coords.longitude; //사용자의 위치 값 html태그에 넣기(<p> id="location")
+			console.log(position.coords.latitude);
+			console.log(position.coords.longitude);
+			//사용자의 위치로 전환
+			var moveLatLon=new kakao.maps.LatLng(position.coords.latitude, position.coords.longitude);
+			//부드럽게 지도를 바꾸게 한다 (지도의 크기보다 멀리 있는 곳은 그냥 바뀜)
+			map.panTo(moveLatLon);
+		}
+        
+
+        //json파일을 읽어와서 출력하기
+        document.getElementById('button1').addEventListener('click', loadCustomer);
+        document.getElementById('button2').addEventListener('click', loadCustomers);
+
+        // 로드 Customer
+        function loadCustomer(e) {
+        const xhr = new XMLHttpRequest();
+
+            
+
+
+        // xml을 실행시켜서 데이터가 저장된 json파일에 접근
+        xhr.open('GET', 'hospitalData.json', true);
+
+        xhr.onload = function () {
+            if (this.status === 200) {
+                const hospital = JSON.parse(this.responseText);
+                console.log(hospital);
+                for (var i=0; i<5; i++){
+                    //json 파일에 있던 값을 불러옴
+                    const output = `
+                        <ul>
+                        <li>name: ${hospital[i].name}</li>
+                        <li>address: ${hospital[i].address}</li>
+                        <li>Latitude: ${hospital[i].Latitude}</li>
+                        <li>Logitude: ${hospital[i].Longitude}</li>
+                        <li>number: ${hospital[i].number}</li>
+                        </ul>
+                    `;
+                    
+                    
+                }
+                document.getElementById('data').innerHTML = output;
+            }
+        }
+
+        xhr.send();
+        }
+
+
+        // Load Customers
+        function loadCustomers(e) {
+        const xhr = new XMLHttpRequest();
+
+        xhr.open('GET', 'hospitalData.json', true);
+
+        xhr.onload = function(){
+            if(this.status === 200) {
+            // console.log(this.responseText);
+
+            const customers = JSON.parse(this.responseText);
+
+            let output = '';
+
+            customers.forEach(function(customer){
+                output += `
+                <ul>
+                <li>ID: ${customer.id}</li>
+                <li>Name: ${customer.name}</li>
+                <li>Company: ${customer.company}</li>
+                <li>Phone: ${customer.phone}</li>
+                </ul>
+            `;
+            });
+
+            document.getElementById('customers').innerHTML = output;
+            }
+        }
+
+        xhr.send();
+        }
+              
+	</script>
+</body>
+</html>

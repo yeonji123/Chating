@@ -1,0 +1,110 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8"/>
+	<title>Kakao 지도 시작하기</title>
+</head>
+<script></script>
+<style>
+	body{
+		margin: 0px;
+	}
+	#map{
+		width: 500px; height: 400px; min-height: 500px;
+	}
+	
+</style>
+<script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+
+<body >
+	<table width="800" height="250">
+		<tr colspan="5" align="center">
+			<!-- 상단바 -->
+			<td>상단바</td>
+		</tr>
+		<tr>
+			<!-- 상단바 -->
+			<td><button>지도</button></td>
+			<td colspan="4"><button>확진자자료</button></td>
+		</tr>
+		<tr>
+			<td rowspan="3">
+				<div>
+					<div id="map"></div>
+					
+				</div>
+				
+				
+			</td>
+			<td><button>선별 진료소</button></td>
+			<td><button>국민안심병원</button></td>
+			<td><button>신속항원검사</button></td>
+			<td><button>자가키트판매처</button></td>
+		</tr>
+		<tr>
+			<td>
+				<button id="location" onclick="getLocation()">location</button>
+			</td>
+			<td colspan="4">
+				<input type="text" id="search">
+			</td>
+			<td>
+				
+			<button>검색</button>	
+			</td>
+		</tr>
+		<tr>
+			<td colspan="4">
+				<p id="mylocation"></p>
+			</td>
+		</tr>
+	</table>
+
+
+	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey="></script>
+	
+	
+	
+	<script>
+		var container = document.getElementById('map');
+		var options = {
+			center: new kakao.maps.LatLng(33.450701, 126.570667),
+			level: 3
+		};
+
+		var map = new kakao.maps.Map(container, options);
+
+       
+        
+
+
+		//현재 위치 가져오기(사용자 위치) + 지도에 사용자의 위치 보여주기
+		var userx; 
+		var usery;
+		var x = document.getElementById("mylocation");
+
+		function getLocation() {
+			if (navigator.geolocation) {
+				navigator.geolocation.getCurrentPosition(panTo);
+			} else {
+				x.innerHTML = "Geolocation is not supported by this browser.";
+			}
+		}
+
+		function panTo(position) {
+			//x.innerHTML = "Latitude: " + position.coords.latitude + "    Longitude: " + position.coords.longitude; //사용자의 위치 값 html태그에 넣기(<p> id="location")
+			console.log(position.coords.latitude);
+			console.log(position.coords.longitude);
+			//사용자의 위치로 전환
+			var moveLatLon=new kakao.maps.LatLng(position.coords.latitude, position.coords.longitude);
+			//부드럽게 지도를 바꾸게 한다 (지도의 크기보다 멀리 있는 곳은 그냥 바뀜)
+			map.panTo(moveLatLon);
+		}
+
+
+        
+	</script>
+</body>
+</html>
